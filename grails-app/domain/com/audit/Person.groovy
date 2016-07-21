@@ -20,17 +20,17 @@ class Person {
 
 
     def onSave = {
-        println "New person Saved"
+        println "************** New person Saved"
         // may optionally refer to newState map
     }
 
     def onDelete = {
-        println "person was deleted"
+        println "************** Person was deleted"
         // may optionally refer to oldState map
     }
 
     def onChange = { oldMap, newMap ->
-        println "Person was changed ..."
+        println "************* Person was changed ..."
         oldMap.each({ key, oldVal ->
             if (oldVal != newMap[key]) {
                 println " * $key changed from $oldVal to " + newMap[key]

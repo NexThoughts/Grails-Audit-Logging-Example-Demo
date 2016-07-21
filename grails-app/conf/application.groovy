@@ -1,6 +1,6 @@
 //import grails.plugin.springsecurity.SpringSecurityUtils
 
-import org.codehaus.groovy.grails.plugin.springsecurity.SpringSecurityUtils
+//import org.codehaus.groovy.grails.plugin.springsecurity.SpringSecurityUtils
 
 dataSource {
     pooled = true
@@ -90,14 +90,16 @@ grails {
             auditDomainClassName = 'com.audit.AuditTrail'
             logIds = true  // log db-ids of associated objects.
             actorClosure = { request, session ->
-                if (request.applicationContext.springSecurityService.principal instanceof String) {
-                    return request.applicationContext.springSecurityService.principal
-                }
-                def username = request.applicationContext.springSecurityService.principal?.username
-                if (SpringSecurityUtils.isSwitched()) {
-                    username = SpringSecurityUtils.switchedUserOriginalUsername + " AS " + username
-                }
-                return username
+//                if (request.applicationContext.springSecurityService.principal instanceof String) {
+//                    return request.applicationContext.springSecurityService.principal
+//                }
+//                def username = request.applicationContext.springSecurityService.principal?.username
+//                if (SpringSecurityUtils.isSwitched()) {
+//                    username = SpringSecurityUtils.switchedUserOriginalUsername + " AS " + username
+//                }
+//                return username
+
+                return request.applicationContext.springSecurityService.principal?.username
             }
         }
     }
