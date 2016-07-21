@@ -2,6 +2,9 @@ package com.audit
 
 class City {
 
+    //    static auditable = true
+
+
     String name
     String state
     String country

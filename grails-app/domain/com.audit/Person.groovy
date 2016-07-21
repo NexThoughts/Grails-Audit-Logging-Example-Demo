@@ -2,6 +2,9 @@ package com.audit
 
 class Person {
 
+    //    static auditable = [ignoreEvents: ["onSave"], ignore: ['version', 'lastUpdated', 'dateCreated', 'uuid']]
+
+
     String firstName
     String lastName
     Long age
