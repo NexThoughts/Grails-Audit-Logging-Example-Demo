@@ -48,7 +48,7 @@ environments {
 grails.plugin.springsecurity.debug.useFilter = true
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/public/landing'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/person/index'
 
 // Added by the Audit-Logging plugin:
 //grails {
