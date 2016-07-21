@@ -1,6 +1,6 @@
 //import grails.plugin.springsecurity.SpringSecurityUtils
 
-//import org.codehaus.groovy.grails.plugin.springsecurity.SpringSecurityUtils
+import org.codehaus.groovy.grails.plugin.springsecurity.SpringSecurityUtils
 
 dataSource {
     pooled = true
@@ -50,25 +50,6 @@ grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/person/index'
 
-// Added by the Audit-Logging plugin:
-//grails {
-//    plugin {
-//        auditLog {
-//            auditDomainClassName = 'com.audit.audit.AuditTrail'
-//            logIds = true  // log db-ids of associated objects.
-//            actorClosure = { request, session ->
-//                if (request.applicationContext.springSecurityService.principal instanceof String) {
-//                    return request.applicationContext.springSecurityService.principal
-//                }
-//                def username = request.applicationContext.springSecurityService.principal?.username
-//                if (SpringSecurityUtils.isSwitched()) {
-//                    username = SpringSecurityUtils.switchedUserOriginalUsername + " AS " + username
-//                }
-//                return username
-//            }
-//        }
-//    }
-//}
 
 
 // Added by the Spring Security Core plugin:
@@ -96,4 +77,30 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/favicon.ico', filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
+
+
+
+// Added by the Audit-Logging plugin:
+grails.plugin.auditLog.auditDomainClassName = 'com.audit.AuditTrail'
+
+// Added by the Audit-Logging plugin:
+grails {
+    plugin {
+        auditLog {
+            auditDomainClassName = 'com.audit.AuditTrail'
+            logIds = true  // log db-ids of associated objects.
+            actorClosure = { request, session ->
+                if (request.applicationContext.springSecurityService.principal instanceof String) {
+                    return request.applicationContext.springSecurityService.principal
+                }
+                def username = request.applicationContext.springSecurityService.principal?.username
+                if (SpringSecurityUtils.isSwitched()) {
+                    username = SpringSecurityUtils.switchedUserOriginalUsername + " AS " + username
+                }
+                return username
+            }
+        }
+    }
+}
+
 

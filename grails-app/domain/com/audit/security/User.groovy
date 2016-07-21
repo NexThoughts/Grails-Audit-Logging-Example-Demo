@@ -7,6 +7,9 @@ import groovy.transform.ToString
 @ToString(includes='username', includeNames=true, includePackage=false)
 class User implements Serializable {
 
+	static auditable = [ignoreEvents: ["onSave"], ignore: ['version', 'lastUpdated', 'dateCreated']]
+
+
 	private static final long serialVersionUID = 1
 
 	transient springSecurityService
@@ -17,6 +20,10 @@ class User implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+
+	User(){
+
+	}
 
 	User(String username, String password) {
 		this()

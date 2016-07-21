@@ -2,8 +2,7 @@ package com.audit
 
 class City {
 
-    //    static auditable = true
-
+    static auditable = [ignoreEvents: ["onSave"], ignore: ['version', 'lastUpdated', 'dateCreated']]
 
     String name
     String state

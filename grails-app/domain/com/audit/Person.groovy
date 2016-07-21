@@ -2,8 +2,7 @@ package com.audit
 
 class Person {
 
-    //    static auditable = [ignoreEvents: ["onSave"], ignore: ['version', 'lastUpdated', 'dateCreated', 'uuid']]
-
+    static auditable = true
 
     String firstName
     String lastName
@@ -21,7 +20,7 @@ class Person {
 
 
     def onSave = {
-        println "new person inserted"
+        println "New person Saved"
         // may optionally refer to newState map
     }
 
